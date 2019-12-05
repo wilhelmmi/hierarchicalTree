@@ -1,0 +1,22 @@
+<div style=" margin-left:30px; margin-top: -20px">
+  <div class="input-group">
+    <!-- <input  class="filter" id="filter" #filter (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="filter nodes" /> -->
+    <input  class="filter" id="filter" #filter (keyup)="filter.value.length > 3 && filterTree(filter.value, tree.treeModel)" placeholder="filter nodes" />
+    <span class="input-group-btn input-space">
+      <button type="button" class="btn btn-secondary " (click)="tree.treeModel.clearFilter()">Clear
+        Filter</button>
+    </span>
+  </div>
+
+  <div class="btn-toolbar">
+    <button type="button" class="btn btn-secondary btn-space" (click)="expandAll()">expandAll</button>
+    <button type="button" class="btn btn-secondary btn-space" (click)="collapseAll()">collapseAll</button>
+  </div>
+
+  <div  style="height: 1000px; width: 500px; margin-top: 15px">
+    <tree-root  #tree [nodes]="nodes" [options]="options"  [focused]="true"></tree-root>
+  </div>
+</div>
+
+
+<!-- tree.treeModel -->

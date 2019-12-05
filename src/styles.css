@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~angular-tree-component/dist/angular-tree-component.css';
+
+  .tree-node {
+    font-weight: bold;
+    color: rgb(27, 26, 26)
+}
+  .tree-node-leaf {
+    font-weight: normal;
+    color: rgb(12, 12, 12);
+}
+  

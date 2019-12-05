@@ -1,0 +1,18 @@
+.btn-space {
+    margin-right: 5px;
+    margin-top: 15px;
+
+  }
+
+.input-group-btn.input-space {
+  
+   padding-left: 10px;
+  }
+
+ 
+.filter {
+border-top-style: none;
+border-right-style: none;
+border-bottom-style: groove;
+border-left-style: none;
+}
