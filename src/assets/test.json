@@ -1,0 +1,22 @@
+
+    [
+        {
+          "types": [ "aerodrome" ],
+          "names": [ "Flugplatz", "Flugfeld", "Flugplätze", "Flugfelder", "Landeplatz", "Landeplätze" ],
+          "namesEn": [ "airfield", "aerodrome", "flying field" ],
+          "namesNl": [ "vliegveld"],
+          "namesIt": [ "aerodromo", "aerodromi" ],
+          "labelDe": { "singular": "Flugplatz", "plural": "Flugplätze" },
+          "labelEn": { "singular": "aerodrome", "plural": "aerodromees" },
+          "labelIt": { "singular": "aerodromo", "plural": "aerodromi" }
+        }, {
+            "types": [ "airport" ],
+            "names": [ "Flughafen", "Flughäfen", "Airport" ],
+            "namesEn" : [ "airport" ],
+            "namesNl" : [ "luchthaven", "vlieghaven" ],
+            "namesIt": [ "aeroporto", "aeroporti" ],
+            "labelDe": { "singular": "Flughafen", "plural": "Flughäfen" },
+            "labelEn": { "singular": "airport", "plural": "airports" },
+            "labelIt": { "singular": "aeroporto", "plural": "aeroporti" }
+          }
+]

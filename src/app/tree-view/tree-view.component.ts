@@ -10,7 +10,6 @@ import { TreeNode, TreeModel, ITreeOptions } from 'angular-tree-component';
 export class TreeViewComponent implements AfterViewInit {
   constructor() { }
 
-
   nodes = [convertedData];
 
   options: ITreeOptions = {
