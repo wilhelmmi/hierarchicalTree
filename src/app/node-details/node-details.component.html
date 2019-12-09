@@ -1,0 +1,16 @@
+<h1>{{nodeName}}</h1>
+<div *ngFor= "let name of data">
+    <ul *ngIf="nodeName == name.types">
+        <li>
+            {{name.names}}
+        </li>
+        <li>
+            {{name.namesEn}}
+        </li>
+        <!--  Idee für Umsetzung Arrays nicht immer vorhanden (NameEn oder NameUs 
+                    wenn data da dann anzeigen wenn nicht dann leer anzeigen -->
+        <li *ngIf="!data[0].namesEN">
+            not there
+        </li>
+    </ul>
+</div>

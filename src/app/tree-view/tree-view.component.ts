@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import convertedData from '../../assets/convertetTypeHierarchy.json';
 import { TreeNode, TreeModel, ITreeOptions } from 'angular-tree-component';
 
@@ -19,6 +19,7 @@ export class TreeViewComponent implements AfterViewInit {
   };
 
   @ViewChild('tree', { static: true }) tree;
+  @Output() selectedNodeName = new EventEmitter<string>();
 
 
   ngAfterViewInit() {
@@ -68,7 +69,7 @@ export class TreeViewComponent implements AfterViewInit {
       if (nodeFound && node.hasChildren) {
 
         for (const child of node.children) {
-          if (child.hasChildren){
+          if (child.hasChildren) {
             foundResults.push(child);
           }
         }
@@ -83,6 +84,15 @@ export class TreeViewComponent implements AfterViewInit {
         child.ensureVisible();
       });
     });
+  }
+
+  getName(treeModel: TreeModel) {
+    const nodeName = treeModel.getActiveNode().data.name;
+    console.log(nodeName);
+    this.selectedNodeName.emit(nodeName);
+    
+
+
   }
 
 }

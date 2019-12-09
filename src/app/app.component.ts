@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'typeHierarchy';
+
+  selectedName: string;
+
+  getSelectedNodeName(name: string){
+    this.selectedName = name;
+  }
 }

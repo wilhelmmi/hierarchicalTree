@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { TreeViewComponent } from './tree-view/tree-view.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { NodeDetailsComponent } from './node-details/node-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TreeViewComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    NodeDetailsComponent
   ],
   imports: [
     BrowserModule,
