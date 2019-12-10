@@ -10,7 +10,7 @@ export class AppComponent {
 
   selectedName: string;
 
-  getSelectedNodeName(name: string){
+  getSelectedNodeName(name: string) {
     this.selectedName = name;
   }
 }

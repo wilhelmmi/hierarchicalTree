@@ -23,7 +23,7 @@ export class TreeViewComponent implements AfterViewInit {
 
 
   ngAfterViewInit() {
-    const firstNode = this.tree.treeModel.roots[0]
+    const firstNode = this.tree.treeModel.roots[0];
     firstNode.expand();
   }
 
@@ -33,14 +33,14 @@ export class TreeViewComponent implements AfterViewInit {
     // this.refresh();
   }
   public collapseAll() {
-    let expandedNodeIds: any = {};
+    const expandedNodeIds: any = {};
     this.setExpandedNodes(expandedNodeIds);
     this.ngAfterViewInit();
   }
 
   public expandAll() {
     let expandedNodeIds: any = {};
-    for (let node of this.tree.treeModel.roots) {
+    for (const node of this.tree.treeModel.roots) {
       expandedNodeIds = this.updateNode(node, expandedNodeIds, true);
     }
     this.setExpandedNodes(expandedNodeIds);
@@ -88,9 +88,7 @@ export class TreeViewComponent implements AfterViewInit {
 
   getName(treeModel: TreeModel) {
     const nodeName = treeModel.getActiveNode().data.name;
-    console.log(nodeName);
     this.selectedNodeName.emit(nodeName);
-    
 
 
   }
