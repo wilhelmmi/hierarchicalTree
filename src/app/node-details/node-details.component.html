@@ -1,16 +1,31 @@
-<h1>{{nodeName}}</h1>
-<div *ngFor= "let name of data">
-    <ul *ngIf="nodeName == name.types">
-        <li>
-            {{name.names}}
+<div *ngFor="let nodeData of data">
+
+    <ul *ngIf="nodeName == nodeData.types">
+        <h1>{{nodeName}}</h1>
+        <li *ngIf="nodeData.names; else empty">
+            <span class="rule1">names:</span>
+            {{nodeData.names}}
         </li>
-        <li>
-            {{name.namesEn}}
+        <li *ngIf="nodeData.namesEn; else empty">
+                <span class="rule1">namesEn:</span>
+            {{nodeData.namesEn}}
         </li>
-        <!--  Idee für Umsetzung Arrays nicht immer vorhanden (NameEn oder NameUs 
-                    wenn data da dann anzeigen wenn nicht dann leer anzeigen -->
-        <li *ngIf="!data[0].namesEN">
-            not there
+        <li *ngIf="nodeData.namesEn-GB; else empty">
+                <span class="rule1">namesEn-GB:</span>
+            {{nodeData.namesEn-GB}}
         </li>
+        <li *ngIf="nodeData.namesEn-GB; else empty">
+                <span class="rule1">namesEn-US:</span>
+            {{nodeData.namesEn-US}}
+        </li>
+        <li *ngIf="nodeData.namesNl; else empty">
+                <span class="rule1">namesNl:</span>
+            {{nodeData.namesNl}}
+        </li>
+        <li *ngIf="nodeData.namesIt; else empty">
+                <span class="rule1">namesIt:</span>
+            {{nodeData.namesIt}}
+        </li>
+        <ng-template #empty></ng-template>
     </ul>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import detailData from '../../assets/test.json';
+import detailData from '../../assets/namesForTypes.json';
 
 @Component({
   selector: 'app-node-details',
@@ -9,13 +9,13 @@ import detailData from '../../assets/test.json';
 export class NodeDetailsComponent implements OnInit {
 
   data = detailData;
+  value = true;
 
   constructor() { }
 
   @Input() nodeName: string;
 
   ngOnInit() {
-    console.log(this.data[0].names);
   }
 
 
