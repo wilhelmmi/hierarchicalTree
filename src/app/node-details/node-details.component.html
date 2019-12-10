@@ -1,31 +1,55 @@
+<!-- <h3>{{nodeName}}</h3> -->
 <div *ngFor="let nodeData of data">
-
-    <ul *ngIf="nodeName == nodeData.types">
-        <h1>{{nodeName}}</h1>
-        <li *ngIf="nodeData.names; else empty">
-            <span class="rule1">names:</span>
-            {{nodeData.names}}
-        </li>
-        <li *ngIf="nodeData.namesEn; else empty">
-                <span class="rule1">namesEn:</span>
-            {{nodeData.namesEn}}
-        </li>
-        <li *ngIf="nodeData.namesEn-GB; else empty">
-                <span class="rule1">namesEn-GB:</span>
-            {{nodeData.namesEn-GB}}
-        </li>
-        <li *ngIf="nodeData.namesEn-GB; else empty">
-                <span class="rule1">namesEn-US:</span>
-            {{nodeData.namesEn-US}}
-        </li>
-        <li *ngIf="nodeData.namesNl; else empty">
-                <span class="rule1">namesNl:</span>
-            {{nodeData.namesNl}}
-        </li>
-        <li *ngIf="nodeData.namesIt; else empty">
-                <span class="rule1">namesIt:</span>
-            {{nodeData.namesIt}}
-        </li>
-        <ng-template #empty></ng-template>
-    </ul>
+       <!--  && nodeData.names -->
+       <div *ngFor="let nodeType of nodeData.types" >
+            <ng-container *ngIf="nodeName == nodeType; then list;"></ng-container>
+            <ng-template #list>
+                    <ul>
+                            <h3>{{nodeData.types}}</h3>
+                            <!-- {{nodeData|json}} -->
+                            <li *ngIf="nodeData.names; else empty1">
+                                <span class="rule1">names:</span>
+                                {{nodeData.names}}
+                            </li>
+                            <li *ngIf="nodeData['namesDe-CH']; else empty2">
+                                    <span class="rule1">namesDe-CH:</span>
+                                    {{nodeData["namesDe-CH"]}}
+                                </li>
+                            <li *ngIf="nodeData.namesEn; else empty3">
+                                <span class="rule1">namesEn:</span>
+                                {{nodeData.namesEn}}
+                            </li>
+                            <li *ngIf="nodeData['namesEn-GB']; else empty4">
+                                <span class="rule1">namesEn-GB:</span>
+                                {{nodeData["namesEn-GB"]}}
+                            </li>
+                            <li *ngIf="nodeData['namesEn-US']; else empty5">
+                                <span class="rule1">namesEn-US:</span>
+                                {{nodeData["namesEn-US"]}}
+                            </li>
+                            <li *ngIf="nodeData.namesNl; else empty6">
+                                <span class="rule1">namesNl:</span>
+                                {{nodeData.namesNl}}
+                            </li>
+                            <li *ngIf="nodeData.namesIt; else empty7">
+                                <span class="rule1">namesIt:</span>
+                                {{nodeData.namesIt}}
+                            </li>
+                            <!-- Wenn lieber anzeige = nichts dann ohne templates und nur ;else empty und -> leeres template erstellen -->
+                            <ng-template #empty1><li><span class="rule1">names: </span>-</li></ng-template>
+                            <ng-template #empty2><li><span class="rule1">namesDe-CH: </span>-</li></ng-template>
+                            <ng-template #empty3><li><span class="rule1">namesEn: </span>-</li></ng-template>
+                            <ng-template #empty4><li><span class="rule1">namesEn-GB: </span>-</li></ng-template>
+                            <ng-template #empty5><li><span class="rule1">namesEn-US: </span>-</li></ng-template>
+                            <ng-template #empty6><li><span class="rule1">namesNl: </span>-</li></ng-template>
+                            <ng-template #empty7><li><span class="rule1">namesIt: </span>-</li></ng-template>
+                        </ul>
+            </ng-template>
+                
+       </div>
+   
 </div>
+
+
+
+
