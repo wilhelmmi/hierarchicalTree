@@ -8,7 +8,7 @@ span.rule1{
 }
 
 div.base {
-    background-color:#F5F5F5;
+    background-color:rgb(255, 255, 255);
     resize: both;
     border-left: 6px solid#5CB89A;
     margin-top: 90px;
