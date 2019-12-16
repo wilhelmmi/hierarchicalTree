@@ -13,7 +13,7 @@ export class NodeDetailsComponent implements OnInit {
   data: {}[] = [];
   value = true;
   constructor(private detailService: DetailService,
-    private nodeService: NodeService) { }
+              private nodeService: NodeService) { }
 
 
 
