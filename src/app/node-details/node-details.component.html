@@ -1,4 +1,4 @@
-<!-- <h3>Detail:</h3> -->
+<!-- <h3>{{nodeName}}</h3> -->
 <div class="base">
     <div *ngFor="let nodeData of data">
         <!--  && nodeData.names -->
@@ -7,7 +7,7 @@
             <ng-template #list>
                 <ul>
                     <h3>{{nodeType}}</h3>
-                    <!-- {{nodeData|json}} -->
+                    <!-- {{nodeData|json}} <-- Filter um nodeData anzeigen -->
                     <li *ngIf="nodeData.names; else empty1">
                         <span class="rule1">names:</span>
                         {{nodeData.names}}

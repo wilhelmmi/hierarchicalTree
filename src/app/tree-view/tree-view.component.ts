@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
-import convertedData from '../../assets/convertetTypeHierarchy.json';
+import { NodeService } from '../services/node.service';
 import { TreeNode, TreeModel, ITreeOptions } from 'angular-tree-component';
 
 @Component({
@@ -7,10 +7,14 @@ import { TreeNode, TreeModel, ITreeOptions } from 'angular-tree-component';
   templateUrl: './tree-view.component.html',
   styleUrls: ['./tree-view.component.css']
 })
-export class TreeViewComponent implements AfterViewInit {
-  constructor() { }
+export class TreeViewComponent implements AfterViewInit, OnInit {
 
-  nodes = [convertedData];
+  nodes: {}[] = [];
+  constructor(private nodeService: NodeService) { }
+
+  ngOnInit() {
+    this.nodes = this.nodeService.nodes;
+  }
 
   options: ITreeOptions = {
 
@@ -19,8 +23,6 @@ export class TreeViewComponent implements AfterViewInit {
   };
 
   @ViewChild('tree', { static: true }) tree;
-  @Output() selectedNodeName = new EventEmitter<string>();
-
 
   ngAfterViewInit() {
     const firstNode = this.tree.treeModel.roots[0];
@@ -88,9 +90,7 @@ export class TreeViewComponent implements AfterViewInit {
 
   getName(treeModel: TreeModel) {
     const nodeName = treeModel.getActiveNode().data.name;
-    this.selectedNodeName.emit(nodeName);
-
-
+    this.nodeService.newNodeName.emit(nodeName);
   }
 
 }

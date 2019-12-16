@@ -1,10 +1,11 @@
 <app-header></app-header>
 <div class="row">
     <div class="col-md-3">
-        <app-tree-view (selectedNodeName) = getSelectedNodeName($event)></app-tree-view>
+        <app-tree-view></app-tree-view>
     </div>
     <div class="col-md-auto">
-        <app-node-details *ngIf="selectedName" [nodeName]= "selectedName"></app-node-details>
+        <!-- <app-node-details *ngIf="selectedName" ></app-node-details> -->
+        <app-node-details></app-node-details>
        
     </div>
 </div>
