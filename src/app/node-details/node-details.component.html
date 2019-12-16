@@ -1,64 +1,72 @@
 <!-- <h3>{{nodeName}}</h3> -->
 <div class="base">
     <div *ngFor="let nodeData of data">
-        <!--  && nodeData.names -->
         <div *ngFor="let nodeType of nodeData.types">
+            <!-- <div *ngFor="let nodeType of nodeData | keyvalue"> -->
             <ng-container *ngIf="nodeName == nodeType; then list;"></ng-container>
             <ng-template #list>
                 <ul>
                     <h3>{{nodeType}}</h3>
-                    <!-- {{nodeData|json}} <-- Filter um nodeData anzeigen -->
-                    <li *ngIf="nodeData.names; else empty1">
-                        <span class="rule1">names:</span>
-                        {{nodeData.names}}
+
+                    <li *ngFor="let item of nodeData| keyvalue">
+                        <b>{{item.key}}</b> :
+                        <!-- {{item.value}} -->
+                        <ng-container *ngIf="item.key.includes('name'); then names;"></ng-container>
+                        <ng-container *ngIf="item.key.includes('label'); then labels;"></ng-container>
+                        <ng-container *ngIf="item.key.includes('types'); then types;"></ng-container>
+                        <!-- <ng-container *ngIf="item.key ===('label'); then label;"></ng-container> -->
+
+
+                        <ng-template #labels>
+                            <!--  wird das  auskommentiert dann funktioniert Kebab aber dafür normale labels nicht-->
+                            <!-- <span *ngFor="let data of item.value | keyvalue"> -->
+                            <ng-container *ngIf="item.key ===('label'); then label; else labels;"></ng-container>
+
+                            <ng-template #label>
+
+                                <span *ngFor="let data of item.value | keyvalue">
+                                    <b>{{data.key}} : </b>
+                    <li *ngFor="let data1 of data.value | keyvalue">{{data1.key}}:
+                        <span *ngFor="let data2 of data1.value | keyvalue">
+                            <b>{{data2.key}}</b> : {{data2.value}}
+                        </span>
                     </li>
-                    <li *ngIf="nodeData['namesDe-CH']; else empty2">
-                        <span class="rule1">namesDe-CH:</span>
-                        {{nodeData["namesDe-CH"]}}
-                    </li>
-                    <li *ngIf="nodeData.namesEn; else empty3">
-                        <span class="rule1">namesEn:</span>
-                        {{nodeData.namesEn}}
-                    </li>
-                    <li *ngIf="nodeData['namesEn-GB']; else empty4">
-                        <span class="rule1">namesEn-GB:</span>
-                        {{nodeData["namesEn-GB"]}}
-                    </li>
-                    <li *ngIf="nodeData['namesEn-US']; else empty5">
-                        <span class="rule1">namesEn-US:</span>
-                        {{nodeData["namesEn-US"]}}
-                    </li>
-                    <li *ngIf="nodeData.namesNl; else empty6">
-                        <span class="rule1">namesNl:</span>
-                        {{nodeData.namesNl}}
-                    </li>
-                    <li *ngIf="nodeData.namesIt; else empty7">
-                        <span class="rule1">namesIt:</span>
-                        {{nodeData.namesIt}}
-                    </li>
-                    <!-- Wenn lieber anzeige = nichts dann ohne templates und nur ;else empty und -> leeres template erstellen -->
-                    <ng-template #empty1>
-                        <li><span class="rule1">names: </span>-</li>
-                    </ng-template>
-                    <ng-template #empty2>
-                        <li><span class="rule1">namesDe-CH: </span>-</li>
-                    </ng-template>
-                    <ng-template #empty3>
-                        <li><span class="rule1">namesEn: </span>-</li>
-                    </ng-template>
-                    <ng-template #empty4>
-                        <li><span class="rule1">namesEn-GB: </span>-</li>
-                    </ng-template>
-                    <ng-template #empty5>
-                        <li><span class="rule1">namesEn-US: </span>-</li>
-                    </ng-template>
-                    <ng-template #empty6>
-                        <li><span class="rule1">namesNl: </span>-</li>
-                    </ng-template>
-                    <ng-template #empty7>
-                        <li><span class="rule1">namesIt: </span>-</li>
-                    </ng-template>
-                </ul>
+                    </span>
+            </ng-template>
+
+            <ng-template #labels> <span *ngFor="let data of item.value | keyvalue"><b> {{data.key}}</b> :
+                    {{data.value}}</span> </ng-template>
+            <!--  </span> -->
+            </ng-template>
+
+            <!--  <ng-template #label>
+                                <span *ngFor="let data of item.value | keyvalue">
+                                        <b>{{data.key}} : </b> 
+                                        <li *ngFor="let data1 of data.value | keyvalue">{{data1.key}}:
+                                            <span *ngFor="let data2 of data1.value | keyvalue">
+                                                <b>{{data2.key}}</b> : {{data2.value}}
+                                            </span>
+                                        </li>
+                                    </span>
+                            </ng-template> -->
+
+            <ng-template #names>
+                <span>
+                    {{item.value}}
+                </span>
+            </ng-template>
+
+            <ng-template #types>
+                <span>
+                    {{item.value}}
+                </span>
+            </ng-template>
+
+            <!-- <span *ngFor="let data of item.value |keyvalue">{{data.key}} :
+                            <span>{{data.value}}</span></span> -->
+            </li>
+
+            </ul>
             </ng-template>
 
         </div>

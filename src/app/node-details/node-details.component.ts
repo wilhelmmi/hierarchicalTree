@@ -13,8 +13,7 @@ export class NodeDetailsComponent implements OnInit {
   data: {}[] = [];
   value = true;
   constructor(private detailService: DetailService,
-              private nodeService: NodeService) { }
-
+    private nodeService: NodeService) { }
 
 
   nodeName: string;
@@ -22,6 +21,7 @@ export class NodeDetailsComponent implements OnInit {
   ngOnInit() {
     this.data = this.detailService.data;
     this.nodeService.newNodeName.subscribe((newNodeName: string) => this.nodeName = newNodeName);
+
 
   }
 
