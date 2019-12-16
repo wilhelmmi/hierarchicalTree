@@ -12,19 +12,47 @@
                         <b>{{item.key}}</b> :
                         <!-- {{item.value}} -->
                         <ng-container *ngIf="item.key.includes('name'); then names;"></ng-container>
-                        <ng-container *ngIf="item.key.includes('label'); then label;"></ng-container>
+                        <ng-container *ngIf="item.key.includes('label'); then labels;"></ng-container>
                         <ng-container *ngIf="item.key.includes('types'); then types;"></ng-container>
+                        <!-- <ng-container *ngIf="item.key ===('label'); then label;"></ng-container> -->
 
-                        <ng-template #label>
+
+                        <ng-template #labels>
                             <span *ngFor="let data of item.value | keyvalue">
-                                <b> {{data.key}}</b> : {{data.value}}
+                                    <ng-container *ngIf="item.key ===('label'); then label; else labels1;"></ng-container>
+
+                                      <ng-template #label>
+                                <span *ngFor="let data of item.value | keyvalue">
+                                        <b>{{data.key}} : </b> 
+                                        <li *ngFor="let data1 of data.value | keyvalue">{{data1.key}}:
+                                            <span *ngFor="let data2 of data1.value | keyvalue">
+                                                <b>{{data2.key}}</b> : {{data2.value}}
+                                            </span>
+                                        </li>
+                                    </span>
+                            </ng-template>
+                            
+                               <ng-template #labels1>  <b> {{data.key}}</b> : {{data.value}}</ng-template>
                             </span>
                         </ng-template>
+
+                       <!--  <ng-template #label>
+                                <span *ngFor="let data of item.value | keyvalue">
+                                        <b>{{data.key}} : </b> 
+                                        <li *ngFor="let data1 of data.value | keyvalue">{{data1.key}}:
+                                            <span *ngFor="let data2 of data1.value | keyvalue">
+                                                <b>{{data2.key}}</b> : {{data2.value}}
+                                            </span>
+                                        </li>
+                                    </span>
+                            </ng-template> -->
+
                         <ng-template #names>
                             <span>
                                 {{item.value}}
                             </span>
                         </ng-template>
+
                         <ng-template #types>
                                 <span>
                                     {{item.value}}
@@ -33,7 +61,7 @@
 
                         <!-- <span *ngFor="let data of item.value |keyvalue">{{data.key}} :
                             <span>{{data.value}}</span></span> -->
-                    </li>
+                        </li>
 
 
 
