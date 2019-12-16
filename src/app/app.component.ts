@@ -13,12 +13,8 @@ export class AppComponent implements OnInit {
   constructor(private nodeService: NodeService) {
   }
 
-  ngOnInit(){
-    this.nodeService.newNodeName.subscribe((newNodeName: string) => this.selectedName = newNodeName);
-    console.log(this.selectedName);
+  ngOnInit() {
+    /* this.nodeService.newNodeName.subscribe((newNodeName: string) => this.selectedName = newNodeName);
+    console.log(this.selectedName); */
   }
-
- /*  getSelectedNodeName(name: string) {
-    this.selectedName = name;
-  } */
 }

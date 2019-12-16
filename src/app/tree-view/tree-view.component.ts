@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
-import {NodeService} from '../services/node.service';
+import { NodeService } from '../services/node.service';
 import { TreeNode, TreeModel, ITreeOptions } from 'angular-tree-component';
 
 @Component({
@@ -12,7 +12,7 @@ export class TreeViewComponent implements AfterViewInit, OnInit {
   nodes: {}[] = [];
   constructor(private nodeService: NodeService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.nodes = this.nodeService.nodes;
   }
 
@@ -23,8 +23,6 @@ export class TreeViewComponent implements AfterViewInit, OnInit {
   };
 
   @ViewChild('tree', { static: true }) tree;
-  @Output() selectedNodeName = new EventEmitter<string>();
-
 
   ngAfterViewInit() {
     const firstNode = this.tree.treeModel.roots[0];
