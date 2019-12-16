@@ -1,5 +1,7 @@
+import { NodeService } from './../services/node.service';
+import { DetailService } from './../services/detail.service';
 import { Component, OnInit, Input } from '@angular/core';
-import detailData from '../../assets/namesForTypes.json';
+
 
 @Component({
   selector: 'app-node-details',
@@ -8,15 +10,19 @@ import detailData from '../../assets/namesForTypes.json';
 })
 export class NodeDetailsComponent implements OnInit {
 
-  data = detailData;
+  data: {}[] = [];
   value = true;
+  constructor(private detailService: DetailService,
+              private nodeService: NodeService) {}
 
-  constructor() { }
 
-  @Input() nodeName: string;
+
+  nodeName: string;
 
   ngOnInit() {
-  }
+    this.data = this.detailService.data;
+    this.nodeService.newNodeName.subscribe((newNodeName: string) => this.nodeName = newNodeName);
 
+  }
 
 }

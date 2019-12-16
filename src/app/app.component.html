@@ -4,7 +4,8 @@
         <app-tree-view (selectedNodeName) = getSelectedNodeName($event)></app-tree-view>
     </div>
     <div class="col-md-auto">
-        <app-node-details *ngIf="selectedName" [nodeName]= "selectedName"></app-node-details>
+        <!-- <app-node-details *ngIf="selectedName" ></app-node-details> -->
+        <app-node-details></app-node-details>
        
     </div>
 </div>

@@ -1,3 +1,5 @@
+import { DetailService } from './services/detail.service';
+import { NodeService } from './services/node.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { TreeModule } from 'angular-tree-component';
@@ -25,7 +27,7 @@ import { NodeDetailsComponent } from './node-details/node-details.component';
     MatIconModule,
     MatButtonModule,
   ],
-  providers: [],
+  providers: [NodeService, DetailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
