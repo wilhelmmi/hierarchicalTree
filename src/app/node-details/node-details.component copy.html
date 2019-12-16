@@ -5,13 +5,10 @@
         <div *ngFor="let nodeType of nodeData.types">
             <ng-container *ngIf="nodeName == nodeType; then list;"></ng-container>
             <ng-template #list>
-                <ul >
+                <ul>
                     <h3>{{nodeType}}</h3>
-                    <li *ngFor="let item of nodeData| keyvalue">
-                        Key: <b>{{item.key}}</b> and Value: <b>{{item.value}}</b>
-                    </li>
                     <!-- {{nodeData|json}} <-- Filter um nodeData anzeigen -->
-<!--                     <li *ngIf="nodeData.names; else empty1">
+                    <li *ngIf="nodeData.names; else empty1">
                         <span class="rule1">names:</span>
                         {{nodeData.names}}
                     </li>
@@ -39,7 +36,7 @@
                         <span class="rule1">namesIt:</span>
                         {{nodeData.namesIt}}
                     </li>
-                    
+                    <!-- Wenn lieber anzeige = nichts dann ohne templates und nur ;else empty und -> leeres template erstellen -->
                     <ng-template #empty1>
                         <li><span class="rule1">names: </span>-</li>
                     </ng-template>
@@ -60,7 +57,7 @@
                     </ng-template>
                     <ng-template #empty7>
                         <li><span class="rule1">namesIt: </span>-</li>
-                    </ng-template> -->
+                    </ng-template>
                 </ul>
             </ng-template>
 
