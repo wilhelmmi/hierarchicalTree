@@ -91,6 +91,7 @@ export class TreeViewComponent implements AfterViewInit, OnInit {
   getName(treeModel: TreeModel) {
     const nodeName = treeModel.getActiveNode().data.name;
     this.nodeService.newNodeName.emit(nodeName);
+    this.nodeService.newValue.emit('');
   }
 
 }

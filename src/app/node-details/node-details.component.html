@@ -1,53 +1,54 @@
 <!-- <h3>{{nodeName}}</h3> -->
-<div class="base">
+<div class="basis">
     <ng-container *ngFor="let nodeData of data">
         <ng-container *ngFor="let nodeType of nodeData.types">
-
             <ng-container *ngIf="nodeName == nodeType; then list;"></ng-container>
+
             <ng-template #list>
+
                 <ul>
                     <h3>{{nodeType}}</h3>
                     <div class="btn-toolbar">
                         <button type="button" class="btn btn-secondary btn-space" (click)="showLabels()">Labels</button>
                         <button type="button" class="btn btn-secondary btn-space" (click)="showNames()">Names</button>
                     </div>
+                    <div class="details">
+                        <ng-container *ngFor="let item of nodeData| keyvalue">
+                            <ng-container *ngIf="show === 'names' && item.key.includes('name'); then names;">
+                            </ng-container>
+                            <ng-container *ngIf="show === 'labels' && item.key.includes('label') ; then labels;">
+                            </ng-container>
 
-                    <li *ngFor="let item of nodeData| keyvalue">
-                        <ng-container *ngIf="item.key.includes('name'); then names;"></ng-container>
-                        <ng-container *ngIf="item.key.includes('label'); then labels;"></ng-container>
-                        <!--   <ng-container *ngIf="item.key.includes('types'); then types;"></ng-container>
- -->
+                            <ng-template class="labels" #labels>
+                                <h6>{{item.key}}</h6> 
+                                <hr style='width: 60px; margin-left: 0px; margin-top: 5px; border-color:#5CB89A'>
+                                <div *ngFor="let data of item.value | keyvalue">
+                                    <label style="font-style:italic"> {{data.key}}</label> : {{data.value}}
+                                </div>
+                                <hr>
+                            </ng-template>
 
-                        <ng-template #labels><b>{{item.key}}</b> :
+                            <ng-template #names>
+                                    <h6 style='margin-top: 10px;'>{{item.key}}</h6>
+                                    <hr style='width: 60px; margin-left: 0px; margin-top: 5px; border-color:#5CB89A'>
+                                    <div style='margin-top: -10px;'>
+                                       {{item.value}}
+                                    </div>
+                                    <hr>
+                                       
+                            </ng-template>
 
-                            <span *ngFor="let data of item.value | keyvalue">
-
-                                <b> {{data.key}}</b> :
-                                {{data.value}}</span>
+                            <!--                         <ng-template #types>
                             <hr>
-                        </ng-template>
-
-                        <ng-template #names>
                             <b>{{item.key}}</b> :
                             <span>
                                 {{item.value}}
                             </span>
-
-                        </ng-template>
-
-                        <ng-template #types>
-                            <hr>
-                            <b>{{item.key}}</b> :
-                            <span>
-                                {{item.value}}
-                            </span>
-                        </ng-template>
-
-                    </li>
-
+                        </ng-template> -->
+                        </ng-container>
+                    </div>
                 </ul>
             </ng-template>
-
         </ng-container>
     </ng-container>
 </div>

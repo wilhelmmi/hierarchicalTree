@@ -6,4 +6,5 @@ export class NodeService {
     nodes = [convertedData];
 
     newNodeName = new EventEmitter<string>();
+    newValue = new EventEmitter<string>();
 }

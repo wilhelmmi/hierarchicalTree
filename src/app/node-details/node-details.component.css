@@ -7,8 +7,8 @@ span.rule1{
 
 }
 
-div.base {
-    background-color:rgb(255, 255, 255);
+div.basis {
+    background-color:white;
     resize: both;
     border-left: 6px solid#5CB89A;
     margin-top: 90px;
@@ -17,8 +17,16 @@ div.base {
  
 }
 
+div.details {
+    margin-top: 15px;
+}
+
 .btn-space {
     margin-right: 5px;
     margin-top: 15px;
 
+  }
+
+h6 {
+    font-weight: bold;
   }
