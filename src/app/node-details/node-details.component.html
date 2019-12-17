@@ -1,30 +1,31 @@
 <!-- <h3>{{nodeName}}</h3> -->
 <div class="base">
-    <div *ngFor="let nodeData of data">
-        <div *ngFor="let nodeType of nodeData.types">
+    <ng-container *ngFor="let nodeData of data">
+        <ng-container *ngFor="let nodeType of nodeData.types">
 
             <ng-container *ngIf="nodeName == nodeType; then list;"></ng-container>
             <ng-template #list>
                 <ul>
                     <h3>{{nodeType}}</h3>
+                    <div class="btn-toolbar">
+                        <button type="button" class="btn btn-secondary btn-space" (click)="showLabels()">Labels</button>
+                        <button type="button" class="btn btn-secondary btn-space" (click)="showNames()">Names</button>
+                    </div>
 
                     <li *ngFor="let item of nodeData| keyvalue">
-                        <!-- <b>{{item.key}}</b> : -->
-                        <!-- {{item.value}} -->
                         <ng-container *ngIf="item.key.includes('name'); then names;"></ng-container>
                         <ng-container *ngIf="item.key.includes('label'); then labels;"></ng-container>
-                        <ng-container *ngIf="item.key.includes('types'); then types;"></ng-container>
-
+                        <!--   <ng-container *ngIf="item.key.includes('types'); then types;"></ng-container>
+ -->
 
                         <ng-template #labels><b>{{item.key}}</b> :
+
                             <span *ngFor="let data of item.value | keyvalue">
 
                                 <b> {{data.key}}</b> :
-                                {{data.value}}</span> </ng-template>
-
-
-
-
+                                {{data.value}}</span>
+                            <hr>
+                        </ng-template>
 
                         <ng-template #names>
                             <b>{{item.key}}</b> :
@@ -47,8 +48,6 @@
                 </ul>
             </ng-template>
 
-        </div>
-
-    </div>
-
+        </ng-container>
+    </ng-container>
 </div>
