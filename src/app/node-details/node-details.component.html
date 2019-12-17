@@ -2,14 +2,14 @@
 <div class="base">
     <div *ngFor="let nodeData of data">
         <div *ngFor="let nodeType of nodeData.types">
-            <!-- <div *ngFor="let nodeType of nodeData | keyvalue"> -->
+
             <ng-container *ngIf="nodeName == nodeType; then list;"></ng-container>
             <ng-template #list>
                 <ul>
                     <h3>{{nodeType}}</h3>
 
                     <li *ngFor="let item of nodeData| keyvalue">
-                        <b>{{item.key}}</b> :
+                        <!-- <b>{{item.key}}</b> : -->
                         <!-- {{item.value}} -->
                         <ng-container *ngIf="item.key.includes('name'); then names;"></ng-container>
                         <ng-container *ngIf="item.key.includes('label'); then labels;"></ng-container>
@@ -18,52 +18,51 @@
 
 
                         <ng-template #labels>
-                            <!--  wird das  auskommentiert dann funktioniert Kebab aber dafür normale labels nicht-->
-                            <!-- <span *ngFor="let data of item.value | keyvalue"> -->
+
                             <ng-container *ngIf="item.key ===('label'); then label; else labels;"></ng-container>
 
                             <ng-template #label>
-
+                                <b>{{item.key}}</b> :
                                 <span *ngFor="let data of item.value | keyvalue">
-                                    <b>{{data.key}} : </b>
-                    <li *ngFor="let data1 of data.value | keyvalue">{{data1.key}}:
+                                    <p></p>
+                                    <b>{{data.key}} :</b>
+                    <li *ngFor="let data1 of data.value | keyvalue">
+                        {{data1.key}}:
                         <span *ngFor="let data2 of data1.value | keyvalue">
                             <b>{{data2.key}}</b> : {{data2.value}}
                         </span>
                     </li>
+                    <hr>
                     </span>
+
             </ng-template>
 
-            <ng-template #labels> <span *ngFor="let data of item.value | keyvalue"><b> {{data.key}}</b> :
+            <ng-template #labels><b>{{item.key}}</b> :
+                <span *ngFor="let data of item.value | keyvalue">
+
+                    <b> {{data.key}}</b> :
                     {{data.value}}</span> </ng-template>
-            <!--  </span> -->
+
             </ng-template>
 
-            <!--  <ng-template #label>
-                                <span *ngFor="let data of item.value | keyvalue">
-                                        <b>{{data.key}} : </b> 
-                                        <li *ngFor="let data1 of data.value | keyvalue">{{data1.key}}:
-                                            <span *ngFor="let data2 of data1.value | keyvalue">
-                                                <b>{{data2.key}}</b> : {{data2.value}}
-                                            </span>
-                                        </li>
-                                    </span>
-                            </ng-template> -->
+
 
             <ng-template #names>
+                <b>{{item.key}}</b> :
                 <span>
                     {{item.value}}
                 </span>
+
             </ng-template>
 
             <ng-template #types>
+                <hr>
+                <b>{{item.key}}</b> :
                 <span>
                     {{item.value}}
                 </span>
             </ng-template>
 
-            <!-- <span *ngFor="let data of item.value |keyvalue">{{data.key}} :
-                            <span>{{data.value}}</span></span> -->
             </li>
 
             </ul>
