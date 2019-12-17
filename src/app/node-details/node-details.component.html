@@ -14,58 +14,37 @@
                         <ng-container *ngIf="item.key.includes('name'); then names;"></ng-container>
                         <ng-container *ngIf="item.key.includes('label'); then labels;"></ng-container>
                         <ng-container *ngIf="item.key.includes('types'); then types;"></ng-container>
-                        <!-- <ng-container *ngIf="item.key ===('label'); then label;"></ng-container> -->
 
 
-                        <ng-template #labels>
+                        <ng-template #labels><b>{{item.key}}</b> :
+                            <span *ngFor="let data of item.value | keyvalue">
 
-                            <ng-container *ngIf="item.key ===('label'); then label; else labels;"></ng-container>
+                                <b> {{data.key}}</b> :
+                                {{data.value}}</span> </ng-template>
 
-                            <ng-template #label>
-                                <b>{{item.key}}</b> :
-                                <span *ngFor="let data of item.value | keyvalue">
-                                    <p></p>
-                                    <b>{{data.key}} :</b>
-                    <li *ngFor="let data1 of data.value | keyvalue">
-                        {{data1.key}}:
-                        <span *ngFor="let data2 of data1.value | keyvalue">
-                            <b>{{data2.key}}</b> : {{data2.value}}
-                        </span>
+
+
+
+
+                        <ng-template #names>
+                            <b>{{item.key}}</b> :
+                            <span>
+                                {{item.value}}
+                            </span>
+
+                        </ng-template>
+
+                        <ng-template #types>
+                            <hr>
+                            <b>{{item.key}}</b> :
+                            <span>
+                                {{item.value}}
+                            </span>
+                        </ng-template>
+
                     </li>
-                    <hr>
-                    </span>
 
-            </ng-template>
-
-            <ng-template #labels><b>{{item.key}}</b> :
-                <span *ngFor="let data of item.value | keyvalue">
-
-                    <b> {{data.key}}</b> :
-                    {{data.value}}</span> </ng-template>
-
-            </ng-template>
-
-
-
-            <ng-template #names>
-                <b>{{item.key}}</b> :
-                <span>
-                    {{item.value}}
-                </span>
-
-            </ng-template>
-
-            <ng-template #types>
-                <hr>
-                <b>{{item.key}}</b> :
-                <span>
-                    {{item.value}}
-                </span>
-            </ng-template>
-
-            </li>
-
-            </ul>
+                </ul>
             </ng-template>
 
         </div>
