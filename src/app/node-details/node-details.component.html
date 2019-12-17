@@ -9,8 +9,8 @@
                 <ul>
                     <h3>{{nodeType}}</h3>
                     <div class="btn-toolbar">
-                        <button type="button" class="btn btn-secondary btn-space" (click)="showLabels()">Labels</button>
-                        <button type="button" class="btn btn-secondary btn-space" (click)="showNames()">Names</button>
+                        <button type="button" class="btn btn-secondary btn-sm btn-space" (click)="showLabels()">Display Labels</button>
+                        <button type="button" class="btn btn-secondary btn-sm btn-space" (click)="showNames()">Display Names</button>
                     </div>
                     <div class="details">
                         <ng-container *ngFor="let item of nodeData| keyvalue">

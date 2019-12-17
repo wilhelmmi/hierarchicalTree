@@ -27,11 +27,10 @@ export class NodeDetailsComponent implements OnInit {
 
   showLabels() {
     this.show = 'labels';
-    console.log(this.show);
   }
+
   showNames() {
     this.show = 'names';
-    console.log(this.show);
   }
 
 }
