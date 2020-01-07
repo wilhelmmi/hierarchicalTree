@@ -11,6 +11,7 @@ import { TreeViewComponent } from './tree-view/tree-view.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NodeDetailsComponent } from './node-details/node-details.component';
+import { TranslatorPipe } from './node-details/countryCode.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NodeDetailsComponent } from './node-details/node-details.component';
     TreeViewComponent,
     HeaderComponent,
     FooterComponent,
-    NodeDetailsComponent
+    NodeDetailsComponent,
+    TranslatorPipe
   ],
   imports: [
     BrowserModule,

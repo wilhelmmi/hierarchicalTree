@@ -9,34 +9,31 @@
                 <ul>
                     <h3>{{nodeType}}</h3>
                     <div class="btn-toolbar">
-                        <button type="button" class="btn btn-secondary btn-sm btn-space" (click)="showLabels()">Display Labels</button>
-                        <button type="button" class="btn btn-secondary btn-sm btn-space" (click)="showNames()">Display Names</button>
+                        <button type="button" class="btn btn-secondary btn-sm btn-space" (click)="showLabels()">Display
+                            Labels</button>
+                        <button type="button" class="btn btn-secondary btn-sm btn-space" (click)="showNames()">Display
+                            Names</button>
                     </div>
                     <div class="details">
                         <ng-container *ngFor="let item of nodeData| keyvalue">
-                            <ng-container *ngIf="show === 'names' && item.key.includes('name'); then names;">
+                            <ng-container *ngIf="show === 'names' && item.key.includes('name')">
+                                <h6 style='margin-top: 10px;'>{{item.key | translatorPipe:countryCode}}</h6>
+                                <hr style='width: 60px; margin-left: 0px; margin-top: 5px; border-color:#5CB89A'>
+                                <div style='margin-top: -10px;'>
+                                    {{item.value}}
+                                </div>
+                                <hr>
                             </ng-container>
-                            <ng-container *ngIf="show === 'labels' && item.key.includes('label') ; then labels;">
-                            </ng-container>
-
-                            <ng-template class="labels" #labels>
-                                <h6>{{item.key}}</h6> 
+                            
+                            <ng-container *ngIf="show === 'labels' && item.key.includes('label')">
+                                <h6>{{item.key | translatorPipe:countryCode}}</h6>
                                 <hr style='width: 60px; margin-left: 0px; margin-top: 5px; border-color:#5CB89A'>
                                 <div *ngFor="let data of item.value | keyvalue">
                                     <label style="font-style:italic"> {{data.key}}</label> : {{data.value}}
                                 </div>
                                 <hr>
-                            </ng-template>
+                            </ng-container>
 
-                            <ng-template #names>
-                                    <h6 style='margin-top: 10px;'>{{item.key}}</h6>
-                                    <hr style='width: 60px; margin-left: 0px; margin-top: 5px; border-color:#5CB89A'>
-                                    <div style='margin-top: -10px;'>
-                                       {{item.value}}
-                                    </div>
-                                    <hr>
-                                       
-                            </ng-template>
                             <!--                         <ng-template #types>
                             <hr>
                             <b>{{item.key}}</b> :
@@ -45,6 +42,7 @@
                             </span>
                         </ng-template> -->
                         </ng-container>
+                       
                     </div>
                 </ul>
             </ng-template>

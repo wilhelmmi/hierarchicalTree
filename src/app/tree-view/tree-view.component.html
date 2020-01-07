@@ -13,7 +13,7 @@
     <button type="button" class="btn btn-secondary btn-space" (click)="collapseAll()">collapseAll</button>
   </div>
 
-  <div  style="height: 950px; width: auto; margin-top: 15px">
+  <div style="height: 950px; width: auto; margin-top: 15px">
     <tree-root (click)="getName(tree.treeModel)"  #tree [nodes]="nodes" [options]="options"  [focused]="true">
     </tree-root>
   </div>

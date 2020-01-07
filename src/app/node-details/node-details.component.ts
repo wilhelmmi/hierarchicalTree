@@ -1,7 +1,7 @@
 import { NodeService } from './../services/node.service';
 import { DetailService } from './../services/detail.service';
-import { Component, OnInit, Input } from '@angular/core';
-import { ThrowStmt } from '@angular/compiler';
+import { Component, OnInit} from '@angular/core';
+
 
 
 @Component({
@@ -10,8 +10,8 @@ import { ThrowStmt } from '@angular/compiler';
   styleUrls: ['./node-details.component.css']
 })
 export class NodeDetailsComponent implements OnInit {
-
   data: {}[] = [];
+  countryCode: {};
   value = true;
   nodeName: string;
   show: string;
@@ -21,6 +21,7 @@ export class NodeDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.data = this.detailService.data;
+    this.countryCode = this.detailService.country;
     this.nodeService.newNodeName.subscribe((newNodeName: string) => this.nodeName = newNodeName);
     this.nodeService.newValue.subscribe((newValue: string) => this.show = newValue);
   }
