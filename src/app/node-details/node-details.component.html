@@ -1,7 +1,7 @@
 <!-- <h3>{{nodeName}}</h3> -->
 <div class="basis">
     <ng-container *ngFor="let nodeData of data">
-        <ng-container *ngFor="let nodeType of nodeData.types">
+        <ng-container *ngFor="let nodeType of nodeData['types']">
             <ng-container *ngIf="nodeName == nodeType; then list;"></ng-container>
 
             <ng-template #list>
